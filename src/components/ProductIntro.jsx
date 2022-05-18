@@ -31,7 +31,9 @@ export default function ProductIntro(props) {
                 <p className="subtitle">{props.subtitle}</p>
             </div>
             <div className="intro-buttons">
-                <button className="cta">Back this project</button>
+                <button onClick={props.modalView} className="cta">
+                    Back this project
+                </button>
                 {bookmarkButton()}
             </div>
         </div>

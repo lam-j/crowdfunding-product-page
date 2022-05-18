@@ -11,9 +11,9 @@ export default function ProductCard(props) {
 
     function stockButton() {
         if (props.remaining > 0) {
-            return <button className="in-stock">Select Reward</button>;
+            return <button onClick={props.modalView}>Select Reward</button>;
         } else {
-            return <button className="no-stock">Out of stock</button>;
+            return <button>Out of stock</button>;
         }
     }
     return (
