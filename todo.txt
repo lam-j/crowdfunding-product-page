@@ -3,9 +3,9 @@ to do
 -- open and close modal (active class) done!
 -- customize radio button done!
 -- make only one selectable at a time done!
-
-
 -- make it so that the modal opens wherever the user is on the page annd that it follows when u scroll
 -- react record the input and submit
 -- make the thank you page 
 -- total backers # changes, total raised changes
+-- total backers change even when noreward is clicked
+-- update amount remaining 

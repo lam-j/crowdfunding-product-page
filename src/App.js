@@ -3,9 +3,33 @@ import Intro from "./components/ProductIntro.jsx";
 import Counter from "./components/Counter.jsx";
 import Product from "./components/ProductCard.jsx";
 import PledgeModal from "./components/PledgeModal.jsx";
+import ThanksModal from "./components/ThanksModal.jsx";
 
 function App() {
+    const [amountRaised, setAmountRaised] = useState(59914);
+    const [totalBackers, setTotalBackers] = useState(5007);
     const [isModalActive, setModal] = useState(false);
+    const [isThanksActive, setThanks] = useState(false);
+
+    // For display purposes only
+    const [bambooRemaining, setBambooRemaining] = useState(101);
+    const [blackRemaining, setBlackRemaining] = useState(64);
+
+    function subtractBamboo() {
+        setBambooRemaining((prev) => prev - 1);
+    }
+    function subtractBlack() {
+        setBlackRemaining((prev) => prev - 1);
+    }
+
+    function addPledgeAmount(newAmount) {
+        setAmountRaised((prev) => prev + newAmount);
+        setTotalBackers((prev) => prev + 1);
+    }
+
+    function addBackers() {
+        setTotalBackers((prev) => prev + 1);
+    }
 
     function modalView() {
         setModal((prev) => !prev);
@@ -25,10 +49,41 @@ function App() {
         }
     }
 
+    function thanksView() {
+        setThanks((prev) => !prev);
+    }
+
+    useEffect(() => {
+        toggleThanksActiveClass();
+    }, [isThanksActive]);
+
+    function toggleThanksActiveClass() {
+        if (document.querySelector(".thanks-modal").classList.contains("active")) {
+            document.querySelector(".thanks-modal").classList.toggle("active");
+            document.querySelector(".shadow").classList.toggle("thanks-active");
+        } else {
+            document.querySelector(".thanks-modal").classList.add("active");
+            document.querySelector(".shadow").classList.add("thanks-active");
+        }
+    }
+
     return (
         <div className="wrapper-wrapper">
             <div className="pledge-modal">
-                <PledgeModal modalView={modalView} title="Mastercraft Bamboo Monitor Riser" />
+                <PledgeModal
+                    thanksView={thanksView}
+                    modalView={modalView}
+                    addPledgeAmount={addPledgeAmount}
+                    addBackers={addBackers}
+                    subtractBamboo={subtractBamboo}
+                    subtractBlack={subtractBlack}
+                    title="Mastercraft Bamboo Monitor Riser"
+                    bambooRemaining={bambooRemaining}
+                    blackRemaining={blackRemaining}
+                />
+            </div>
+            <div className="thanks-modal">
+                <ThanksModal thanksView={thanksView} />
             </div>
             <div className="shadow"></div>
             <div className="wrapper">
@@ -49,9 +104,9 @@ function App() {
                         subtitle="A beautiful & handcrafted monitor stand to reduce neck and eye strain."
                     />
                     <Counter
-                        amountRaised="89,914"
+                        amountRaised={amountRaised.toLocaleString()}
                         goal="100,000"
-                        backers="5,007"
+                        backers={totalBackers.toLocaleString()}
                         daysRemaining="56"
                     />
                     <div className="about">
@@ -77,7 +132,7 @@ function App() {
                                 pledgeAmount="25"
                                 description="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional
                                             campaign, and you’ll be added to a special Backer member list."
-                                remaining="101"
+                                remaining={bambooRemaining}
                             />
 
                             <Product
@@ -86,7 +141,7 @@ function App() {
                                 pledgeAmount="75"
                                 description="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional
                                             campaign, and you’ll be added to a special Backer member list."
-                                remaining="64"
+                                remaining={blackRemaining}
                             />
 
                             <Product

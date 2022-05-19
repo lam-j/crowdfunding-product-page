@@ -359,3 +359,48 @@ p.pledge-card-subtitle {
     justify-self: right;
     padding: 15px 25px;
 }
+
+/* CSS for the Thanks Modal */
+.shadow.thanks-active {
+    display: block;
+    background-color: gray;
+    opacity: 50%;
+    position: absolute;
+    height: 300vh;
+    width: 100vw;
+    z-index: 1;
+}
+.thanks-modal {
+    display: none;
+}
+.thanks-modal.active {
+    display: block;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    z-index: 2;
+}
+.thanks-modal-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10% 10%;
+    text-align: center;
+}
+
+.thanks-modal-main p {
+    line-height: 1.75rem;
+}
+
+.thanks-modal-main button {
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 15px 30px;
+    margin-top: 5%;
+}

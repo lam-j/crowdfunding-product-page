@@ -22,6 +22,10 @@ export default function PledgeModal(props) {
             <form className="pledge-form">
                 <div id="no-reward">
                     <PledgeCard
+                        thanksView={props.thanksView}
+                        modalView={props.modalView}
+                        addPledgeAmount={props.addPledgeAmount}
+                        addBackers={props.addBackers}
                         onClick={handleCardClick}
                         title="Pledge with no reward"
                         subtitle="Choose to support us
@@ -33,28 +37,44 @@ export default function PledgeModal(props) {
                 </div>
                 <div id="bamboo-stand">
                     <PledgeCard
+                        thanksView={props.thanksView}
+                        modalView={props.modalView}
+                        addPledgeAmount={props.addPledgeAmount}
+                        addBackers={props.addBackers}
+                        subtractBamboo={props.subtractBamboo}
+                        subtractBlack={props.subtractBlack}
                         onClick={handleCardClick}
                         title="Bamboo Stand"
                         subtitle=" You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to
                                     a special Backer member list."
                         cost="25"
-                        remaining="101"
+                        remaining={props.bambooRemaining}
                     />
                 </div>
 
                 <div id="black-edition-stand">
                     <PledgeCard
+                        thanksView={props.thanksView}
+                        modalView={props.modalView}
+                        addPledgeAmount={props.addPledgeAmount}
+                        addBackers={props.addBackers}
+                        subtractBamboo={props.subtractBamboo}
+                        subtractBlack={props.subtractBlack}
                         onClick={handleCardClick}
                         title="Black Edition Stand"
                         subtitle="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
                                     member list. Shipping is included."
                         cost="75"
-                        remaining="64"
+                        remaining={props.blackRemaining}
                     />
                 </div>
 
                 <div id="mahogany-special-edition">
                     <PledgeCard
+                        thanksView={props.thanksView}
+                        modalView={props.modalView}
+                        addPledgeAmount={props.addPledgeAmount}
+                        addBackers={props.addBackers}
                         onClick={handleCardClick}
                         className="pledge-card"
                         title="Mahogany Special Edition"
